@@ -1,1 +1,35 @@
-# 101.demo_sonarqube_cicd
+# 101.demo_sonarqube_cicd  
+
+## memo 
+```
+■Ubuntu/OpenJDK 17/fontconfig   
+
+■SonarQube  
+	1.SonarQube Community Edition:  
+	https://www.sonarsource.com/products/sonarqube/downloads/?gads_campaign=SQ-Mroi-PMax&gads_ad_group=Global&gads_keyword=&gad_source=1&gclid=EAIaIQobChMIg9u8wPn7gQMVz62WCh1_XQp2EAAYASACEgL1CfD_BwE  
+	2.Preparation:  
+	https://docs.sonarsource.com/sonarqube/latest/requirements/prerequisites-and-overview/  
+		1. install jdk   
+		The SonarQube server requires Java version 17  
+		2.install a db  
+		PostgreSQL 15  
+		3.Linux - see doc link  
+
+	3.Installation & Setup:  
+	https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/  
+	https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/configure-and-operate-a-server/operating-the-server/  
+	https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/  
+
+■Jenkins  
+	1.Preparation  
+	https://www.jenkins.io/doc/book/installing/linux/  
+		Java 17-OpenJDK, Eclipse Temurin, and Amazon Corretto  
+		LTS 2.361.1 (September 2022)  
+	2. installation & setup  
+	https://www.jenkins.io/doc/book/installing/linux/#debianubuntu  
+	
+
+■CICD flow  
+	pull request --> sonarqube --> report to reviewer --> yes/no  「yes」--> source build/compile/release --> cicd finished(successful)
+                                                                     「no」--> cicd finished(rejected by reviewer)  
+```                  
