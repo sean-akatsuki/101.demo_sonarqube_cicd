@@ -190,6 +190,11 @@ WantedBy=multi-user.target
 $sudo systemctl enable sonarqube.service
 $sudo systemctl start sonarqube.service
 
+#####login
+-http://localhost:9000
+-login: admin
+-password: admin
+
 ```
 
 
