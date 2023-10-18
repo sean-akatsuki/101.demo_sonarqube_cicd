@@ -149,7 +149,8 @@ sonar.jdbc.password=xxxxxxx
 sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
 ----------
 
-#####設定(Optional)-higher IO for elasticSearch
+#####設定(Optional)-higher IO device for elasticSearch
+#####ご認識ください：/var/sonarqube/に紐づいているDeviceがhigh IOである前提
 $vi <SONARQUBE_HOME>/conf/sonar.properties
 ----------
 sonar.path.data=/var/sonarqube/data
