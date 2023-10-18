@@ -6,7 +6,7 @@
 ```
 #####インストール
 $sudo apt update
-$sudo apt install fontconfig openjdk-17-jre
+$sudo apt install fontconfig openjdk-17-jre openjdk-17-jdk
 $java -version
 結果例
 openjdk version "17.0.8" 2023-07-18
