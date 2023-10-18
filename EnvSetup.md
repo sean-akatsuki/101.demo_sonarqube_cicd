@@ -29,7 +29,7 @@ $sudo nano /etc/profile.d/maven.sh
 
 #####add contents below to maven.sh
 -----
-export JAVA_HOME=/usr/lib/jvm/java
+export JAVA_HOME=/usr/lib/jvm/jdk-17
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
