@@ -1,3 +1,5 @@
+- create date: 2023-10-18
+- update date:none
 
 # 1. Base Env/環境準備 (OS:Ubuntu)
 ## 1.1 JDK17, fontconfig/ jdk17のインストール
