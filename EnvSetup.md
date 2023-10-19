@@ -130,11 +130,14 @@ fs.file-max is greater than or equal to 131072
 the user running SonarQube can open at least 131072 file descriptors
 the user running SonarQube can open at least 8192 threads
 
-update(with root user):
+
+update(with root user): 
 sysctl -w vm.max_map_count=524288
 sysctl -w fs.file-max=131072
 ulimit -n 131072
 ulimit -u 8192
+
+add commands above to os init script 
 /***desc end***/
 $sudo sysctl vm.max_map_count
 $sudo sysctl fs.file-max
