@@ -1,7 +1,7 @@
 - create date: 2023-10-18
 - update date:none
 
-# 1. Base Env/環境準備 (OS:Ubuntu, memory >=4Gib, >=2cpu)
+# 1. Base Env/環境準備 (OS:Ubuntu, memory >=4Gib, >=2vcpu, Disk >=20Gib)
 ## 1.1 JDK17, fontconfig
 ```
 #####インストール
