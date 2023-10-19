@@ -9,9 +9,9 @@ $sudo apt update
 $sudo apt install fontconfig openjdk-17-jre openjdk-17-jdk
 $java -version
 結果例
-openjdk version "17.0.8" 2023-07-18
-OpenJDK Runtime Environment (build 17.0.8+7-Debian-1deb12u1)
-OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
+openjdk version "17.0.8.1" 2023-08-24
+OpenJDK Runtime Environment (build 17.0.8.1+1-Ubuntu-0ubuntu120.04)
+OpenJDK 64-Bit Server VM (build 17.0.8.1+1-Ubuntu-0ubuntu120.04, mixed mode, sharing)
 ```
 ## 1.2 Maven
 ```
@@ -29,7 +29,7 @@ $sudo nano /etc/profile.d/maven.sh
 
 #####add contents below to maven.sh
 -----
-export JAVA_HOME=/usr/lib/jvm/jdk-17
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
@@ -43,6 +43,11 @@ $source /etc/profile.d/maven.sh
 
 #####確認
 $mvn -version
+Apache Maven 3.9.5 (57804ffe001d7215b5e7bcb531cf83df38f93546)
+Maven home: /opt/maven
+Java version: 17.0.8.1, vendor: Private Build, runtime: /usr/lib/jvm/java-17-openjdk-amd64
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "5.15.0-1036-aws", arch: "amd64", family: "unix"
 ```
 ## 1.3 Jenkins
 ```
@@ -60,8 +65,14 @@ $sudo systemctl enable jenkins
 $sudo systemctl start jenkins
 $sudo systemctl status jenkins
 ステータス例：
-Loaded: loaded (/lib/systemd/system/jenkins.service; enabled; vendor preset: enabled)
-Active: active (running) since Tue 2018-11-13 16:19:01 +03; 4min 57s ago
+● jenkins.service - Jenkins Continuous Integration Server
+     Loaded: loaded (/lib/systemd/system/jenkins.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2023-10-19 00:26:33 UTC; 30s ago
+   Main PID: 7369 (java)
+      Tasks: 43 (limit: 1141)
+     Memory: 291.8M
+     CGroup: /system.slice/jenkins.service
+             └─7369 /usr/bin/java -Djava.awt.headless=true -jar /usr/share/java/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=8080
 
 #####firewall configure(Optional)-必要に応じてファイアウォールを設定、クラウド環境では不要
 $YOURPORT=8080
@@ -96,7 +107,9 @@ $ sudo apt-get install postgresql-15
 
 #####DBユーザsonarqube
 $ sudo -i -u postgres
-postgres=# create user sonarqube SUPERUSER with login password 'xxxxxxxx';
+$psql
+postgres=# create user sonarqube with password 'xxxxxxxx';
+alter user sonarqube with SUPERUSER;
 \q
 
 #####データベースsonarqube
@@ -105,7 +118,7 @@ sonarqube=# create database sonarqube encoding utf8;
 SHOW SERVER_ENCODING;
 \q
 
-#####auto start on system starting(Optional)/必要に応じて実施
+#####auto start on system starting(Optional)/通常不要、必要に応じて実施
 sudo systemctl enable postgres
 ```
 ## 1.5 SonarQube
