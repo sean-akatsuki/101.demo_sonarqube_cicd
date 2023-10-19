@@ -123,7 +123,7 @@ sudo systemctl enable postgres
 ```
 ## 1.5 SonarQube
 ```
-#####システムチェック
+#####システムチェック、ご注意:SonarQubeの利用でMem >2Gib,より良いIOを使ってください 
 /***desc start***/
 vm.max_map_count is greater than or equal to 524288
 fs.file-max is greater than or equal to 131072
