@@ -110,11 +110,12 @@ $ sudo -i -u postgres
 $psql
 postgres=# create user sonarqube with password 'xxxxxxxx';
 alter user sonarqube with SUPERUSER;
+create database sonarqube owner sonarqube encoding utf8;
 \q
 
 #####データベースsonarqube
 $psql -h localhost -u sonarqube -W
-sonarqube=# create database sonarqube encoding utf8;
+sonarqube=# 
 SHOW SERVER_ENCODING;
 \q
 
