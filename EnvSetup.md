@@ -182,6 +182,7 @@ sonar.web.context=/sonarqube
 ----------
 
 #####SonarQubeサービスを作成
+$sudo ln -s /home/sonarqube/sonarqube-10.2.1.78527 /opt/sonarqube
 $sudo vi /etc/systemd/system/sonarqube.service
 -----------
 [Unit]
