@@ -46,6 +46,12 @@ https://www.baeldung.com/spring-thymeleaf-css-js
 
 
 jenkins --> circle ci / github actions
+jenkins & slack: https://plugins.jenkins.io/slack/
+jenkins & aws sns: https://plugins.jenkins.io/snsnotify/
+jenkins & sonarqube:
+https://plugins.jenkins.io/sonar/
+https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/scanners/jenkins-extension-sonarqube/
+https://stackoverflow.com/questions/65880598/how-to-obtain-the-sonarqube-taskid-report-url-in-jenkins-pipeline
 
 ```                  
 
