@@ -30,6 +30,7 @@
 	
 ■SprintBoot with web content
 https://spring.io/guides/gs/serving-web-content/
+https://www.baeldung.com/spring-thymeleaf-css-js  
 
 ■CICD flow  
 	pull request --> sonarqube --> report to reviewer --> yes/no  「yes」--> source build/compile/release --> cicd finished(successful)
