@@ -33,7 +33,7 @@
 	pull request --> sonarqube --> report to reviewer --> yes/no  「yes」--> source build/compile/release --> cicd finished(successful)
                                                                      「no」--> cicd finished(rejected by reviewer)  
 
-■実施step
+■予定実施step
 1. 環境準備
 2. 開発コード準備(java springboot)
 3. Jenkins pipelineの作成
