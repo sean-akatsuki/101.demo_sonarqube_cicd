@@ -43,6 +43,10 @@ https://www.baeldung.com/spring-thymeleaf-css-js
 4. SonarQube使い関連の実施
 5. Jenkins & SonarQube & Github のIntegration
 
+
+
+jenkins --> circle ci / github actions
+
 ```                  
 
 ◇参考資料/reference  
