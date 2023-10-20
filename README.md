@@ -34,7 +34,7 @@
                                                                      「no」--> cicd finished(rejected by reviewer)  
 
 ■予定実施step
-1. 環境準備
+1. 環境準備-os,db,jdk,jenkins,sonarqube等々
 2. 開発コード準備(java springboot)
 3. Jenkins pipelineの作成
 4. SonarQube使い関連の実施
