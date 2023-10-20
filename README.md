@@ -28,6 +28,8 @@
 	2. installation & setup  
 	https://www.jenkins.io/doc/book/installing/linux/#debianubuntu  
 	
+■SprintBoot with web content
+https://spring.io/guides/gs/serving-web-content/
 
 ■CICD flow  
 	pull request --> sonarqube --> report to reviewer --> yes/no  「yes」--> source build/compile/release --> cicd finished(successful)
@@ -39,6 +41,7 @@
 3. Jenkins pipelineの作成
 4. SonarQube使い関連の実施
 5. Jenkins & SonarQube & Github のIntegration
+
 ```                  
 
 ◇参考資料/reference  
