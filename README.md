@@ -53,6 +53,9 @@ https://plugins.jenkins.io/sonar/
 https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/scanners/jenkins-extension-sonarqube/
 https://stackoverflow.com/questions/65880598/how-to-obtain-the-sonarqube-taskid-report-url-in-jenkins-pipeline
 
+cicd trigger decision:
+https://softwareengineering.stackexchange.com/questions/238146/continuous-integration-deployment-test-on-commit-pull-request-or-what
+
 ```                  
 
 ◇参考資料/reference  
