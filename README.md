@@ -38,7 +38,7 @@
 2. 開発コード準備(java springboot)
 3. Jenkins pipelineの作成
 4. SonarQube使い関連の実施
-5. Jenkins & SonarQubeのIntegration
+5. Jenkins & SonarQube & Github のIntegration
 ```                  
 
 ◇参考資料/reference  
