@@ -56,6 +56,23 @@ https://stackoverflow.com/questions/65880598/how-to-obtain-the-sonarqube-taskid-
 cicd trigger decision:
 https://softwareengineering.stackexchange.com/questions/238146/continuous-integration-deployment-test-on-commit-pull-request-or-what
 
+
+github: webhook --> payload url(xxxx:8080/github-webhook/)
+
+sonarqube:
+A. create project(name, key,main branch name)-->set up --> with jenkins -->github -->configure analysis -->1.configure pipeline on jenkins along with guidance
+--> 2.continue to create github webook--> 3.continue to create a jenkins jobs -->4.maven --> continue with guidance.
+
+B. account --> security --> token --> generate token -->copy
+
+jenkins：
+manage jenkins --> manage plugins -->available plugins -->search sonarqube scanner & ssh2 easy  --> install
+manage jenkins --> global tool configuration --> sonarqube scanner (add) -->save
+manage jenkins -->configure system -->sonarqube servers --> add sonarqube --> token(add) -->secret text --> token generated at B step
+pipeline --> add step(build step) -->execute sonarqube scanner --> analysis properties: properties configured at A step
+
+run pipeline!
+
 ```                  
 
 ◇参考資料/reference  
