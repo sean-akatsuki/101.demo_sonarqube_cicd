@@ -2,11 +2,16 @@ package com.sonarcicd.demo.service;
 
 import org.springframework.web.client.RestTemplate;
 
-
 public class ServiceCheckUtil {
 
-    static final String JENKINS_URL="http://localhost:8080";
-    static final String SONARQUBE_URL="http://localhost:9000";
+    //static final String JENKINS_URL="http://localhost:8080";
+    //static final String SONARQUBE_URL="http://localhost:9000";
+
+    @Value("${healthcheck.jenkins.url}")
+    private static final String JENKINS_URL;
+
+    @Value("${healthcheck.sonarqube.url}")
+    private static final  String SONARQUBE_URL;
 
     RestTemplate restTemplate = new RestTemplate();
     
