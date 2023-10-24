@@ -6,9 +6,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestapiController {
 
-	@GetMapping("/")
-	public String index() {
-		return "Greetings from Spring Boot!";
+	@GetMapping("/checkjenkins")
+	public String checkJenkins() {
+		return "1";
 	}
+	
+	@GetMapping("/checksonar")
+	public String checkSonarQube() {
+		return "1";
+	}	
+	
+	@GetMapping("/checkdb")
+	public String checkDatabase() {
+		return "1";
+	}
+
 
 }
