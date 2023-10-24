@@ -16,6 +16,7 @@ public class ServiceCheckUtil {
     RestTemplate restTemplate = new RestTemplate();
     
     public static boolean checkJenkins(){
+        try {} exception{}
         if(restTemplate.getForEntity(JENKINS_URL, String.class).getStatusCode().isError()){
             return false;
         }else{
@@ -24,7 +25,13 @@ public class ServiceCheckUtil {
     }
 
     public static boolean checkDatabase(){
+        try{
+        DataSource dataSource = (DataSource) jdbcTemplate.getDataSource();
         return true;
+        }exception{
+            return false;
+        }
+        
     }
 
     public static boolean checkSonarQube(){
