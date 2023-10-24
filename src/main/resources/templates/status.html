@@ -53,17 +53,17 @@
         <tr>
             <td>データベース</td>
             <td><div class="server" id="database-rs"><ul><li></li><li></li><li></li><li></li><li></li></ul></div></td>
-            <td><button class="button" id="database-btn">更新</button></td>
+            <td><button class="button" id="database-btn" th:onclick="ajaxCaller('database');">更新</button></td>
         </tr>
         <tr>
             <td>Jenkins</td>
             <td><div class="server" id="jenkins-rs"><ul><li></li><li></li><li></li><li></li><li></li></ul></div></td>
-            <td><button class="button" id="jenkins-btn">更新</button></td>
+            <td><button class="button" id="jenkins-btn" th:onclick="ajaxCaller('jenkins');"></button>>更新</button></td>
         </tr>
         <tr>
             <td>SonarQube</td>
             <td><div class="server" id="sonarqube-rs"><ul><li></li><li></li><li></li><li></li><li></li></ul></div></td>
-            <td><button class="button" id="sonarqube-btn" >更新</button></td>
+            <td><button class="button" id="sonarqube-btn" th:onclick="ajaxCaller('sonarqube');">更新</button></td>
         </tr>
     </tbody>
 </table>
