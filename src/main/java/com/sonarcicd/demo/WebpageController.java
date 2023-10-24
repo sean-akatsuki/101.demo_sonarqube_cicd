@@ -7,7 +7,7 @@ public class WebpageController {
 
     @GetMapping("/index")
     public String helloWorld(Model model){
-        model.addAttribute("message", "this is a index page");
+        model.addAttribute("message", "this is a index page via Thymleaf");
         return "index";
     }    
   
