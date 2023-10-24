@@ -1,5 +1,6 @@
 package com.sonarcicd.demo.controller;
 
+import com.sonarcicd.demo.service.ServiceCheckUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  *ページ遷移コントローラー 
  *  
 */ 
-
 
 @Controller
 public class WebpageController {
