@@ -1,5 +1,6 @@
-package com.sonarcicd.demo;
+package com.sonarcicd.demo.controller;
 
+import com.sonarcicd.demo.service.ServiceCheckUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
