@@ -10,17 +10,17 @@ public class RestapiController {
 
 	@GetMapping("/checkjenkins")
 	public String checkJenkins() {
-		return "1";
+		return ServiceCheckUtil.checkJenkins()? "0":"1";
 	}
 	
 	@GetMapping("/checksonar")
 	public String checkSonarQube() {
-		return "1";
+		return ServiceCheckUtil.checkSonarQube()? "0":"1";
 	}	
 	
 	@GetMapping("/checkdb")
 	public String checkDatabase() {
-		return "1";
+		return ServiceCheckUtil.checkDatabase()? "0":"1";
 	}
 
 
