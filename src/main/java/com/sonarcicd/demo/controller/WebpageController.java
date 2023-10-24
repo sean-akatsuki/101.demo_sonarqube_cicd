@@ -4,9 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-/* 
-ページ遷移コントローラー
-*/
+/**
+ *ページ遷移コントローラー 
+ *  
+*/ 
+
 
 @Controller
 public class WebpageController {
