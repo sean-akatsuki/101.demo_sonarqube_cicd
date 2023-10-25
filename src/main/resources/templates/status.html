@@ -17,7 +17,7 @@
     var database_err = /*[[${database_err}]]*/'';
     var jenkins_err = /*[[${jenkins_err}]]*/'';
     var sonarqube_err = /*[[${sonarqube_err}]]*/'';
-
+    
     if (database_err=="1"){
         $("#database-rs").addClass("error");
     }else{
@@ -38,9 +38,13 @@
 
 /*]]>*/
 </script>
+<center>
 <h1>Good Luck, Today!</h1>
-<br><br><br>
-
+<!--
+p th:text="${database_err}"></p>
+<p th:text="${jenkins_err}"></p>
+<p th:text="${sonarqube_err}"></p>
+-->
 <table class="styled-table">
     <thead>
         <tr>
@@ -52,23 +56,23 @@
     <tbody>
         <tr>
             <td>データベース</td>
-            <td><div class="server" id="database-rs"><ul><li></li><li></li><li></li><li></li><li></li></ul></div></td>
+            <td><div class="server" id="database-rs"><ul><li></li><li></li><li></li></ul></div></td>
             <td><button class="button" id="database-btn" th:onclick="ajaxCaller('database');">更新</button></td>
         </tr>
         <tr>
             <td>Jenkins</td>
-            <td><div class="server" id="jenkins-rs"><ul><li></li><li></li><li></li><li></li><li></li></ul></div></td>
-            <td><button class="button" id="jenkins-btn" th:onclick="ajaxCaller('jenkins');"></button>>更新</button></td>
+            <td><div class="server" id="jenkins-rs"><ul><li></li><li></li><li></li></ul></div></td>
+            <td><button class="button" id="jenkins-btn" th:onclick="ajaxCaller('jenkins');">更新</button></td>
         </tr>
         <tr>
             <td>SonarQube</td>
-            <td><div class="server" id="sonarqube-rs"><ul><li></li><li></li><li></li><li></li><li></li></ul></div></td>
+            <td><div class="server" id="sonarqube-rs"><ul><li></li><li></li><li></li></ul></div></td>
             <td><button class="button" id="sonarqube-btn" th:onclick="ajaxCaller('sonarqube');">更新</button></td>
         </tr>
     </tbody>
 </table>
 
-
+<!--
     <div class="box">
     <div class="server">
       <ul>
@@ -103,5 +107,7 @@
 
 
   </div>
+  -->
+</center>
 </body>
 </html>

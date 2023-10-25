@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class WebpageController {
 
-    @Value("{healthcheck.JENKINS_URL}")
+    @Value("${healthcheck.JENKINS_URL}")
     private String JENKINS_URL;
-    @Value("{healthcheck.SONARQUBE_URL}")
+    @Value("${healthcheck.SONARQUBE_URL}")
     private String SONARQUBE_URL;
-    @Value("{healthcheck.DATABASE_URL}")
+    @Value("${healthcheck.DATABASE_URL}")
     private String DATABASE_URL;
 
     @GetMapping("/index")
