@@ -18,28 +18,33 @@
     var jenkins_err = /*[[${jenkins_err}]]*/'';
     var sonarqube_err = /*[[${sonarqube_err}]]*/'';
     
-    if (database_err=="1"){
-        $("#database-rs").addClass("error");
-    }else{
-        $("#database-rs").removeClass("error");
-    }
+    $(document).ready(function() {
+        console.log( "ready!" );
 
-    if (jenkins_err=="1"){
-        $("#jenkins-rs").addClass("error");
-    }else{
-        $("#jenkins-rs").removeClass("error");
-    }
+        if (database_err=="0"){
+            $("#database-rs").addClass("error");
+        }else{
+            $("#database-rs").removeClass("error");
+        }
 
-    if (sonarqube_err=="1"){
-        $("#sonarqube-rs").addClass("error");
-    }else{
-        $("#sonarqube-rs").removeClass("error");
-    }
+        if (jenkins_err=="0"){
+            $("#jenkins-rs").addClass("error");
+        }else{
+            $("#jenkins-rs").removeClass("error");
+        }
 
+        if (sonarqube_err=="0"){
+            $("#sonarqube-rs").addClass("error");
+        }else{
+            $("#sonarqube-rs").removeClass("error");
+        }
+    }); 
 /*]]>*/
+
 </script>
 <center>
 <h1>Good Luck, Today!</h1>
+<h2>最新のステータスではありません、更新ボタンをクリックして最新ステータスが表示されます。</h2>
 <!--
 p th:text="${database_err}"></p>
 <p th:text="${jenkins_err}"></p>
