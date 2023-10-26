@@ -217,9 +217,30 @@ $sudo systemctl start sonarqube.service
 ```
 
 # 2. CICD Integration(SonarQube, Jenkins, Github) 
+## 2.1 prepare application/デモ用アプリの準備
+本リポジトリのコードソースをご参考    
+後ろのcicd Stepでアプリ更新にはサービスの停止・再起動が必要になるため、アプリをOS自動起動サービス(systemd)に登録完了までにしてください。    
+※プロセスのkill方法でも実装できますが、分かりやすくように、OS(systemd)サービスとしてアプリを停止・起動・再起動する  
+OSサービス登録例：  
+```
+[Unit]
+Description=myapp
+After=syslog.target
+
+[Service]
+ExecStart=/var/myapp/myapp.jar
+
+[Install]
+WantedBy=multi-user.target
+```
 
 
+## 2.2 Jenkins & Githubの設定
+jenkinsでsecretを作成  
 
+githubでsecretを使って、jenkinへのwebhookを配置  
+
+jenkinsでpipelineを作成
 
 
 
