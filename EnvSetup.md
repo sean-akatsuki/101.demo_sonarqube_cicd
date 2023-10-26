@@ -217,6 +217,15 @@ $sudo systemctl start sonarqube.service
 ```
 
 # 2. CICD Integration(SonarQube, Jenkins, Github) 
+## 2.1 prepare application/デモ用アプリの準備
+本リポジトリのコードソースをご参考
+## 2.2 Jenkins & Githubの設定
+jenkinsでsecretを作成  
+
+githubでsecretを使って、jenkinへのwebhookを配置  
+
+jenkinsでpipelineを作成
+
 
 
 
