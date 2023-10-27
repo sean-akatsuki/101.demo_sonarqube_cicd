@@ -248,7 +248,7 @@ jenkins-->jenkinsの管理/manage jenkins-->システム/system --> Github --> �
 3.1 環境準備  
 install plugin [Maven Integration]-->manage jenkins --> Tool  --> maven追加 -->名前:M3 & MAVEN_HOME:インストールされたmavenのhomeを指定(```mvn -version```で確認できる) --> save/保存
 
-
+sdada
 
 
 
