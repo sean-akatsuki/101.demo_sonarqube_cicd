@@ -236,11 +236,17 @@ WantedBy=multi-user.target
 
 
 ## 2.2 Jenkins & Githubの設定
-jenkinsでsecretを作成  
+1.jenkinsでsecretを作成  
+jenkins-->jenkinsの管理/manage jenkins-->credentials/認証情報 --> Domains(Global) -->add credentials(認証情報を追加)　--> SecretText --> Secret文字列を入力, id=github-webhook-->save/保存  
 
-githubでsecretを使って、jenkinへのwebhookを配置  
+jenkins-->jenkinsの管理/manage jenkins-->システム/system --> Github --> 高度な設定/Advanced　--> Shared secretsを追加 --> github-webhookを選択 --> save/保存  
 
-jenkinsでpipelineを作成
+2.githubでsecretを使って、jenkinへのwebhookを配置  
+リポジトリのsettingsをクリック--> webhooksをクリック -->  payload url: http://xxxxxx:xxx/github-webhook & Secret:上記１で作成したSecret文字列 & Trigger: Pullrequest,Pushes & Activeをチェック -->save/保存  
+
+3.jenkinsでpipelineを作成  
+3.1 環境準備  
+install plugin [Maven Integration]-->manage jenkins --> Tool  --> maven追加 -->名前:M3 & MAVEN_HOME:インストールされたmavenのhomeを指定(```mvn -version```で確認できる) --> save/保存
 
 
 
