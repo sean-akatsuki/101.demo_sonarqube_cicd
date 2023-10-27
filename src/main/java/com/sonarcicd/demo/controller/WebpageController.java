@@ -37,4 +37,8 @@ public class WebpageController {
         model.addAttribute("sonarqube_err", sc.checkURL(SONARQUBE_URL)? "0":"1");
         return "status";
     }
+    @GetMapping("/")
+     public String rootCon(Model model){
+        return "redirect:/status";
+    }
 }
