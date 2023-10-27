@@ -224,13 +224,15 @@ $sudo systemctl start sonarqube.service
 OSサービス登録例：  
 ```
 [Unit]
-Description=myapp
+Description=A Spring Boot application
 After=syslog.target
 
 [Service]
-ExecStart=/var/myapp/myapp.jar
+User=appuser
+ExecStart=/bin/sh -c "/usr/bin/java -jar /home/appuser/application.jar  >> /home/appuser/application.log"
+SuccessExitStatus=143 
 
-[Install]
+[Install] 
 WantedBy=multi-user.target
 ```
 
