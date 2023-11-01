@@ -5,13 +5,16 @@ pipeline {
         maven 'M3'
     }
     //def scannerHome=tool 'sonarqube'
+    
     stages {
+        //pull code source from github
         stage('Preparation') { 
             steps{
                 git branch: 'develop', url: 'https://github.com/sean-akatsuki/101.demo_sonarqube_cicd.git'
             }
         }
         
+        //calling SonarQube code analysis 
         stage('SonarQubeAnalysis'){
             steps{
                 withSonarQubeEnv('sonarqube'){
@@ -20,6 +23,7 @@ pipeline {
             }
         }
         
+        //check code analysis result
         stage('SonarQubeResultCheck'){
             steps{
                 script{
@@ -33,12 +37,14 @@ pipeline {
             }
         }
         
+        //build code source
         stage('AppBuild') {
             steps{
                 sh 'mvn -f pom.xml clean package'
             }
         }
-    
+
+        //deploy application to server
         stage('AppDeploy'){
             steps{
                 sh 'sudo systemctl stop demoapp.service'
