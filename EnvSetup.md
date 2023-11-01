@@ -247,7 +247,7 @@ WantedBy=multi-user.target
 jenkins-->jenkinsの管理/manage jenkins-->システム/system --> Github --> 高度な設定/Advanced　--> Shared secretsを追加 --> github-webhookを選択 --> save/保存  
 
 ### 2.2.2 作成したsecretを githubのwebhookに配置  
-操作ルート：リポジトリのsettingsをクリック--> webhooksをクリック -->  payload url: 'http://JENKINSのURL:port/github-webhook/' & Secret:上記１で作成したSecret文字列 & Trigger: Pullrequest,Pushes & Activeをチェック -->save/保存  
+操作ルート：リポジトリのsettingsをクリック--> webhooksをクリック -->  payload url: ```http://JENKINSのURL:port/github-webhook/``` & Secret:上記１で作成したSecret文字列 & Trigger: Pullrequest,Pushes & Activeをチェック -->save/保存  
 
 ## 2.3 Jenkins & SonarQubeの連携設定
 ### 2.3.1 Sonarqubeでプロジェクトを作成  
@@ -259,7 +259,7 @@ Tokenの設定
 
 ## 2.4 Jenkins pipelineジョブの作成  
 ### 2.4.1 Jenkinsfileスクリプトの準備
-スクリプト(Jenkinsfile)  
+[スクリプト](Jenkinsfile)  
 
 ### 2.4.2 Jenkins Jobの作成  
 
