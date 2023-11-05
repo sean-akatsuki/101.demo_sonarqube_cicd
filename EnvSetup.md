@@ -217,6 +217,7 @@ $sudo systemctl start sonarqube.service
 ```
 
 # 2. CICD Integration(SonarQube, Jenkins, Github) 
+
 ## 2.1 基本準備 
 ### 2.1.1 prepare application/デモ用アプリの準備
 本リポジトリのコードソースをご参考    
@@ -225,6 +226,7 @@ $sudo systemctl start sonarqube.service
 OSサービス登録例：  
 ```
 [Unit]
+
 Description=A Spring Boot application
 After=syslog.target
 
