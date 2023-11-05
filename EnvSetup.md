@@ -194,7 +194,7 @@ Type=simple
 User=sonarqube
 Group=sonarqube
 PermissionsStartOnly=true
-ExecStart=/bin/nohup /usr/bin/java -Xms32m -Xmx32m -Djava.net.preferIPv4Stack=true -jar /opt/sonarqube/lib/sonar-application-xxxxxx.jar
+ExecStart=/bin/nohup /usr/bin/java -Xms512m -Xmx3072m -Djava.net.preferIPv4Stack=true -jar /opt/sonarqube/lib/sonar-application-xxxxxx.jar
 StandardOutput=syslog
 LimitNOFILE=131072
 LimitNPROC=8192
@@ -217,40 +217,52 @@ $sudo systemctl start sonarqube.service
 ```
 
 # 2. CICD Integration(SonarQube, Jenkins, Github) 
-## 2.1 prepare application/デモ用アプリの準備
+
+## 2.1 基本準備 
+### 2.1.1 prepare application/デモ用アプリの準備
 本リポジトリのコードソースをご参考    
 後ろのcicd Stepでアプリ更新にはサービスの停止・再起動が必要になるため、アプリをOS自動起動サービス(systemd)に登録完了までにしてください。    
 ※プロセスのkill方法でも実装できますが、分かりやすくように、OS(systemd)サービスとしてアプリを停止・起動・再起動する  
 OSサービス登録例：  
 ```
 [Unit]
-Description=myapp
+
+Description=A Spring Boot application
 After=syslog.target
 
 [Service]
-ExecStart=/var/myapp/myapp.jar
+User=appuser
+ExecStart=/bin/sh -c "/usr/bin/java -jar /home/appuser/application.jar  >> /home/appuser/application.log"
+SuccessExitStatus=143 
 
-[Install]
+[Install] 
 WantedBy=multi-user.target
 ```
 
+## 2.1.2 jenkinsでmaven基本準備  
+操作ルート：install plugin [Maven Integration]-->manage jenkins --> Tool  --> maven追加 -->名前:M3 & MAVEN_HOME:インストールされたmavenのhomeを指定(```mvn -version```で確認できる) --> save/保存
 
-## 2.2 Jenkins & Githubの設定
-jenkinsでsecretを作成  
+## 2.2 Jenkins & Githubの連携設定
+### 2.2.1 jenkinsでgithub用のsecretを作成  
+操作ルート：jenkins-->jenkinsの管理/manage jenkins-->credentials/認証情報 --> Domains(Global) -->add credentials(認証情報を追加)　--> SecretText --> Secret文字列を入力, id=github-webhook-->save/保存  
 
-githubでsecretを使って、jenkinへのwebhookを配置  
+jenkins-->jenkinsの管理/manage jenkins-->システム/system --> Github --> 高度な設定/Advanced　--> Shared secretsを追加 --> github-webhookを選択 --> save/保存  
 
-jenkinsでpipelineを作成
+### 2.2.2 作成したsecretを githubのwebhookに配置  
+操作ルート：リポジトリのsettingsをクリック--> webhooksをクリック -->  payload url: ```http://JENKINSのURL:port/github-webhook/``` & Secret:上記１で作成したSecret文字列 & Trigger: Pullrequest,Pushes & Activeをチェック -->save/保存  
 
+## 2.3 Jenkins & SonarQubeの連携設定
+### 2.3.1 Sonarqubeでプロジェクトを作成  
+token作成
+### 2.3.2 SoanrqubeでJenkins用webhookを作成
+### 2.3.3 JenkinsでSonarQubeとの連携の設定
+プラグインのインストール    
+Tokenの設定  
 
+## 2.4 Jenkins pipelineジョブの作成  
+### 2.4.1 Jenkinsfileスクリプトの準備
+[スクリプト](Jenkinsfile)  
 
+### 2.4.2 Jenkins Jobの作成  
 
-
-
-
-
-
-
-
-
-
+# 3. 実施テスト 

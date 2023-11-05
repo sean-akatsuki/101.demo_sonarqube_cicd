@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/action.js}"></script>
+    <title>service status list</title>
+</head>
+
+<body>
+<script th:inline="javascript">
+/*<![CDATA[*/
+    var database_err = /*[[${database_err}]]*/'';
+    var jenkins_err = /*[[${jenkins_err}]]*/'';
+    var sonarqube_err = /*[[${sonarqube_err}]]*/'';
+    
+    $(document).ready(function() {
+        console.log( "ready!" );
+
+        if (database_err=="0"){
+            $("#database-rs").addClass("error");
+        }else{
+            $("#database-rs").removeClass("error");
+        }
+
+        if (jenkins_err=="0"){
+            $("#jenkins-rs").addClass("error");
+        }else{
+            $("#jenkins-rs").removeClass("error");
+        }
+
+        if (sonarqube_err=="0"){
+            $("#sonarqube-rs").addClass("error");
+        }else{
+            $("#sonarqube-rs").removeClass("error");
+        }
+    }); 
+/*]]>*/
+
+</script>
+<center>
+<h1>Good Luck, Today!</h1>
+<h2>最新のステータスではありません、更新ボタンをクリックして最新ステータスが表示されます。</h2>
+<!--
+p th:text="${database_err}"></p>
+<p th:text="${jenkins_err}"></p>
+<p th:text="${sonarqube_err}"></p>
+-->
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>サービス名</th>
+            <th>サービスステータス</th>
+            <th>ステータス更新</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>データベース</td>
+            <td><div class="server" id="database-rs"><ul><li></li><li></li><li></li></ul></div></td>
+            <td><button class="button" id="database-btn" th:onclick="ajaxCaller('database');">更新</button></td>
+        </tr>
+        <tr>
+            <td>Jenkins</td>
+            <td><div class="server" id="jenkins-rs"><ul><li></li><li></li><li></li></ul></div></td>
+            <td><button class="button" id="jenkins-btn" th:onclick="ajaxCaller('jenkins');">更新</button></td>
+        </tr>
+        <tr>
+            <td>SonarQube</td>
+            <td><div class="server" id="sonarqube-rs"><ul><li></li><li></li><li></li></ul></div></td>
+            <td><button class="button" id="sonarqube-btn" th:onclick="ajaxCaller('sonarqube');">更新</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<!--
+    <div class="box">
+    <div class="server">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <span>RUNNING</span>
+
+    <br><br><br>
+
+    <div class="server warning">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <span>WARNING</span>
+    
+    <br><br><br>
+    
+    <div class="server error">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <span>OFFLINE</span>
+
+
+  </div>
+  -->
+</center>
+</body>
+</html>
