@@ -14,11 +14,12 @@ public class DemoApplication {
 		//String password = "blue";
 		//System.out.println(username+password);
 
-		/** Noncompliant block*/
+		/** Noncompliant block
 		String inputString = "s3cr37";
 		byte[] key= inputString.getBytes();
 		byte[] message="message".getBytes(); 
-		SHA256.getHMAC(key, message);  // Noncompliant
+		SHA256.getHMAC(key, message);  
+		*/
 
 		SpringApplication.run(DemoApplication.class, args);
 	}
