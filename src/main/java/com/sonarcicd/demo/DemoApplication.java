@@ -9,12 +9,15 @@ import org.h2.security.SHA256;
 public class DemoApplication {
 
 	public static void main(String[] args) {
+		
 		//String username = "steve";
 		//String password = "blue";
 		//System.out.println(username+password);
+
 		/** Noncompliant block*/
 		String inputString = "s3cr37";
-		byte[] key         = inputString.getBytes();
+		byte[] key= inputString.getBytes();
+		byte[] message="message".getBytes(); 
 		SHA256.getHMAC(key, message);  // Noncompliant
 
 		SpringApplication.run(DemoApplication.class, args);
