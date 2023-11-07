@@ -320,4 +320,9 @@ SonarQube task 'AYunHpPIU3QKxc5KFEDY' status is 'SUCCESS'
 SonarQube task 'AYunHpPIU3QKxc5KFEDY' completed. Quality gate is 'ERROR'
 ```
 SonarQubeコンソールで確認すると、脆弱性がチェックできたため、JenkinsへQuality gateエラーを送信しました    
+<img width="907" alt="SonarReport" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/3e7137c6-bcf5-45cc-968b-27e0671af70c">  
+
+    
+<img width="911" alt="SonarIssue" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/5cde8cac-d6db-42bc-b9b6-dc2f7ce188f4">
+
 
