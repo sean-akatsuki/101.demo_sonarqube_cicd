@@ -270,9 +270,9 @@ Tokenの設定
 ```
 import org.h2.security.SHA256;
 
-		String inputString = "s3cr37";
-		byte[] key= inputString.getBytes();
-		byte[] message="message".getBytes(); 
-		SHA256.getHMAC(key, message);  
+	String inputString = "s3cr37";
+	byte[] key= inputString.getBytes();
+	byte[] message="message".getBytes(); 
+	SHA256.getHMAC(key, message);  
 
 ```
