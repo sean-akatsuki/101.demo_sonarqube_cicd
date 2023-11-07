@@ -240,30 +240,63 @@ WantedBy=multi-user.target
 ```
 
 ## 2.1.2 jenkinsでmaven基本準備  
-操作ルート：install plugin [Maven Integration]-->manage jenkins --> Tool  --> maven追加 -->名前:M3 & MAVEN_HOME:インストールされたmavenのhomeを指定(```mvn -version```で確認できる) --> save/保存
+操作ルート：install plugin [Maven Integration]-->manage jenkins --> Tool  --> maven追加 -->名前:M3 & MAVEN_HOME:インストールされたmavenのhomeを指定(```mvn -version```で確認できる) --> save/保存  
+<img width="852" alt="maven" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/d44afc14-8ebd-4041-8ede-ff34d99ac994">
 
 ## 2.2 Jenkins & Githubの連携設定
 ### 2.2.1 jenkinsでgithub用のsecretを作成  
-操作ルート：jenkins-->jenkinsの管理/manage jenkins-->credentials/認証情報 --> Domains(Global) -->add credentials(認証情報を追加)　--> SecretText --> Secret文字列を入力, id=github-webhook-->save/保存  
+操作ルート：jenkins-->jenkinsの管理/manage jenkins-->credentials/認証情報 --> Domains(Global) -->add credentials(認証情報を追加)　--> SecretText --> Secret文字列を入力, id=github-webhook-->save/保存    
+<img width="890" alt="github-webhook" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/d9b4903b-3909-4166-ac30-48f557491c32">
 
-jenkins-->jenkinsの管理/manage jenkins-->システム/system --> Github --> 高度な設定/Advanced　--> Shared secretsを追加 --> github-webhookを選択 --> save/保存  
+jenkins-->jenkinsの管理/manage jenkins-->システム/system --> Github --> 高度な設定/Advanced　--> Shared secretsを追加 --> github-webhookを選択 --> save/保存    
+<img width="837" alt="github-secret" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/b00da004-d170-428a-bf85-7e832726e36a">
 
 ### 2.2.2 作成したsecretを githubのwebhookに配置  
-操作ルート：リポジトリのsettingsをクリック--> webhooksをクリック -->  payload url: ```http://JENKINSのURL:port/github-webhook/``` & Secret:上記１で作成したSecret文字列 & Trigger: Pullrequest,Pushes & Activeをチェック -->save/保存  
+操作ルート：リポジトリのsettingsをクリック--> webhooksをクリック -->  payload url: ```http://JENKINSのURL:port/github-webhook/``` & Secret:上記１で作成したSecret文字列 & Trigger: Pullrequest,Pushes & Activeをチェック -->save/保存    
+<img width="856" alt="webhooksetting" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/ab8b0180-5647-437d-9779-1ef3e294e095">
 
 ## 2.3 Jenkins & SonarQubeの連携設定
 ### 2.3.1 Sonarqubeでプロジェクトを作成  
-token作成
-### 2.3.2 SoanrqubeでJenkins用webhookを作成
-### 2.3.3 JenkinsでSonarQubeとの連携の設定
-プラグインのインストール    
-Tokenの設定  
+SonarQubeにログイン-->Projects-->Create Project-->manual-->情報入力-->Next-->Use the Global Setting-->Create Project  
+<img width="889" alt="sonarproject" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/07cd9556-0275-4302-95c3-a1b5a0a082f8">
 
-## 2.4 Jenkins pipelineジョブの作成  
-### 2.4.1 Jenkinsfileスクリプトの準備
+### 2.3.2 SoanrqubeでJenkins用webhookを作成
+SonarQubeにログイン-->Administration-->Configuration-->Webhook-->Create-->```http://JENKINS_URL/sonarqube-webhook/```  
+<img width="895" alt="sonarwebhook" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/81d8ef09-cd2b-4bdd-8f1d-43d55c2fb864">
+
+### 2.3.3 JenkinsでSonarQubeとの連携の設定
+1.プラグインのインストール  
+Jenkins管理-->プラグイン-->「SonarQube Scanner for Jenkins」をインストール-->jenkins再起動  
+<img width="512" alt="sonarplugin" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/9ace98e4-24f7-4d0c-b56d-1825c1524c02">  
+
+2.SonarQubeで通信用のTokenを生成（ここで幾つかScopeでのTokenの生成方法がある、代表としてUserTokenを使う）    
+Accout-->My Account-->Security-->Generate Tokens-->情報入力・選択-->Generate  
+<img width="891" alt="sonartokengen" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/9779adec-748f-4cfb-a49f-3cd31cbbaa0b">  
+
+3.Jenkinsで上記作成したTokenを設定  
+Jenkinsの管理-->認証情報-->Global-->Add Credential  
+<img width="873" alt="sonartokenconf" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/03b01d86-2066-4514-a7a1-882c3c00d54c">  
+
+4.JenkinsでSonarQube Serverに関する設定  
+Jenkinsの管理-->System-->SonarQube servers-->情報入力＆選択-->保存  
+<img width="874" alt="sonarserverconf" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/fbd5abd0-b5d0-4486-829c-71de9946cd7e">  
+
+## 2.4 SonarQubeでカスタマイズ静的解析基準の作成  
+SonarQubeでログイン-->Quality Gates-->Create-->input name-->Save-->Unlock Editing-->Add Condition  
+<img width="909" alt="SonarCondition" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/f711344f-15d4-4e46-88b1-b36880317b12">  
+脆弱性＆バッグ判定基準を追加  
+<img width="893" alt="SCon" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/c7b5432e-21bf-46c3-81db-aaeb507fafa2">
+
+## 2.5 Jenkins pipelineジョブの作成  
+### 2.5.1 Jenkinsfileスクリプトの準備
 [スクリプト](Jenkinsfile)  
 
-### 2.4.2 Jenkins Jobの作成  
+### 2.5.2 Jenkins Jobの作成  
+Jenkins新規ジョブ作成-->job名設定-->パイプライン-->OK  
+[GitHub hook trigger for GITScm polling]をチェック、   
+上記作成したJenkinsfile ScriptをScriptエリアに入力する、  
+「Use Groovy Sandbox」をチェックする  
+<img width="902" alt="JenkinsJob" src="https://github.com/sean-akatsuki/101.demo_sonarqube_cicd/assets/18321490/c410837e-20f1-405c-bddd-194f88bf03c4">  
 
 # 3. 実施テスト 
 下記の脆弱性あるコードをアプリに書き込んでコミットする  
@@ -276,3 +309,15 @@ import org.h2.security.SHA256;
 	SHA256.getHMAC(key, message);  
 
 ```  
+Jenkinsジョブ自動起動、ジョブエラー発生
+```
+Timeout set to expire in 5 min 0 sec
+[Pipeline] {
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AYunHpPIU3QKxc5KFEDY' on server 'sonarqube'
+SonarQube task 'AYunHpPIU3QKxc5KFEDY' status is 'PENDING'
+SonarQube task 'AYunHpPIU3QKxc5KFEDY' status is 'SUCCESS'
+SonarQube task 'AYunHpPIU3QKxc5KFEDY' completed. Quality gate is 'ERROR'
+```
+SonarQubeコンソールで確認すると、脆弱性がチェックできたため、JenkinsへQuality gateエラーを送信しました    
+
