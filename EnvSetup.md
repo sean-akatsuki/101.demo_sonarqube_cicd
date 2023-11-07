@@ -266,7 +266,7 @@ Tokenの設定
 ### 2.4.2 Jenkins Jobの作成  
 
 # 3. 実施テスト 
-脆弱性あるコード
+下記の脆弱性あるコードをアプリに書き込んでコミットする  
 ```
 import org.h2.security.SHA256;
 
@@ -275,4 +275,4 @@ import org.h2.security.SHA256;
 	byte[] message="message".getBytes(); 
 	SHA256.getHMAC(key, message);  
 
-```
+```  
